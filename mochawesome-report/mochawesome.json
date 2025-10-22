@@ -1,0 +1,100 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-10-22T16:11:09.467Z",
+    "end": "2025-10-22T16:11:24.039Z",
+    "duration": 14572,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "51db229d-fe37-426d-b6a7-09a7a4d094f4",
+      "title": "",
+      "fullFile": "C:\\Users\\INDAH PURNAMA SARI\\Documents\\Mini Bootcamp QA Engineer-DigitalSkola\\Web_UI_Automation\\saucedemo-automation\\test\\saucedemo.test.js",
+      "file": "\\test\\saucedemo.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f4f69e8d-52d8-4e98-a7a7-4b2f3583d8b6",
+          "title": "SauceDemo Automation Test",
+          "fullFile": "C:\\Users\\INDAH PURNAMA SARI\\Documents\\Mini Bootcamp QA Engineer-DigitalSkola\\Web_UI_Automation\\saucedemo-automation\\test\\saucedemo.test.js",
+          "file": "\\test\\saucedemo.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Sukses Login dan Urutkan Produk dari A-Z",
+              "fullTitle": "SauceDemo Automation Test Sukses Login dan Urutkan Produk dari A-Z",
+              "timedOut": false,
+              "duration": 14517,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('chrome').build();\nawait driver.manage().setTimeouts({ implicit: 10000 });\ntry {\n  \n  await driver.get('https://www.saucedemo.com/');\n  \n  await driver.findElement(By.id('user-name')).sendKeys('standard_user');\n  await driver.findElement(By.id('password')).sendKeys('secret_sauce');\n  await driver.findElement(By.id('login-button')).click();\n  \n  await driver.wait(until.urlContains('inventory.html'), 10000);\n  \n  const currentUrl = await driver.getCurrentUrl();\n  assert.ok(currentUrl.includes('inventory.html'), 'Login gagal');\n  \n  const sortDropdown = await driver.findElement(By.className('product_sort_container'));\n  await sortDropdown.click();\n  await sortDropdown.findElement(By.css('option[value=\"az\"]')).click();\n  const firstItem = await driver.findElement(By.className('inventory_item_name')).getText();\n  console.log('Produk pertama setelah sort A-Z:', firstItem);\n  assert.ok(firstItem.length > 0, 'Produk tidak ditemukan');\n  console.log('✅ Test sukses: Login & Sort A-Z berjalan dengan benar');\n} catch (err) {\n  console.error('❌ Error:', err.message);\n  throw err;\n} finally {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "a577e095-b8a0-4f5e-8202-ba66938cb8a8",
+              "parentUUID": "f4f69e8d-52d8-4e98-a7a7-4b2f3583d8b6",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "a577e095-b8a0-4f5e-8202-ba66938cb8a8"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14517,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.4"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.3.0"
+    }
+  }
+}
