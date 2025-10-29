@@ -6,7 +6,6 @@ describe('SauceDemo Automation Test', function () {
   this.timeout(60000);
   let driver;
 
-  
   before(async function () {
     driver = await new Builder().forBrowser('chrome').build();
     await driver.manage().setTimeouts({ implicit: 10000 });
